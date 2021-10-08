@@ -8,8 +8,10 @@
 </head>
 <body>
     <button id="BtnShare">Share File</button>
+    <p id="Message"></p>
     <script >
         let btnShare = document.getElementById('BtnShare');
+        let message = document.getElementById('Message');
 
         btnShare.addEventListener('click', shareFile);
 
@@ -24,14 +26,14 @@
                     title: "Title Field",
                     // url: window.location.href
                     files: shareFile
-                })
-                .catch(console.error);
+                }).then(() => message.textContent = "Success")
+                .catch( error => message.textContent = error.message)
 
                 console.log('END share');
 
             } 
             else{
-                console.log('No support share');
+                alert('No support share');
             }
 }
 
