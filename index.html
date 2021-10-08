@@ -26,15 +26,18 @@
             shareData.text = "Text share";
             shareData.title = "Title share";
 
-            if(navigator.canShare({ files: shareFile }))
+            if (navigator.canShare)
             {
-                shareData.files = shareFile;
-                canFile.textContent = "Can share files";
-            }
-            else
-            {
-                shareData.url = window.location.href;
-                canFile.textContent = "No share files";
+                if(navigator.canShare({ files: shareFile }))
+                {
+                    shareData.files = shareFile;
+                    canFile.textContent = "Can share files";
+                }
+                else
+                {
+                    shareData.url = window.location.href;
+                    canFile.textContent = "No share files";
+                }
             }
 
             if (navigator.share) {
