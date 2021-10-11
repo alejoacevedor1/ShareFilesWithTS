@@ -19,9 +19,9 @@ function shareFile () {
         canShare?: (data?: ShareData) => boolean;
     }
 
-    let navigator: ExtendNavigator = window.navigator;
+    let newNav: ExtendNavigator = window.navigator;
 
-    if (navigator.canShare && navigator.canShare({ files: shareFile }))
+    if (newNav.canShare && newNav.canShare({ files: shareFile }))
     {
         shareData.files = shareFile;
         delete shareData.url;
@@ -32,10 +32,10 @@ function shareFile () {
     }
 
 
-    if (navigator.share) {
-        navigator.share( shareData )
+    if (newNav.share) {
+        newNav.share( shareData )
         .then(() => message.textContent = "Success")
-        .catch( error => console.error(error))
+        .catch( error => message.textContent = error)
 
         track.textContent = 'End share';
     } 

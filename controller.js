@@ -11,8 +11,8 @@ function shareFile() {
     shareData.text = "Text share";
     shareData.title = "Title share";
     shareData.url = window.location.href;
-    var navigator = window.navigator;
-    if (navigator.canShare && navigator.canShare({ files: shareFile })) {
+    var newNav = window.navigator;
+    if (newNav.canShare && newNav.canShare({ files: shareFile })) {
         shareData.files = shareFile;
         delete shareData.url;
         canFile.textContent = "Can share files";
@@ -20,9 +20,9 @@ function shareFile() {
     else {
         canFile.textContent = "No share files";
     }
-    if (navigator.share) {
-        navigator.share(shareData)
-            .then(function () { return message.textContent = "Success"; })["catch"](function (error) { return console.error(error); });
+    if (newNav.share) {
+        newNav.share(shareData)
+            .then(function () { return message.textContent = "Success"; })["catch"](function (error) { return message.textContent = error; });
         track.textContent = 'End share';
     }
     else {
