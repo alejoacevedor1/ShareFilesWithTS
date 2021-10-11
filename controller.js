@@ -11,7 +11,7 @@ function shareFile() {
     shareData.text = "Text share";
     shareData.title = "Title share";
     shareData.url = window.location.href;
-    var newNav = window.navigator;
+    var newNav = navigator;
     if (newNav.canShare && newNav.canShare({ files: shareFile })) {
         shareData.files = shareFile;
         delete shareData.url;

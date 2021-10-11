@@ -19,7 +19,7 @@ function shareFile () {
         canShare?: (data?: ShareData) => boolean;
     }
 
-    let newNav: ExtendNavigator = window.navigator;
+    let newNav: ExtendNavigator = navigator;
 
     if (newNav.canShare && newNav.canShare({ files: shareFile }))
     {
