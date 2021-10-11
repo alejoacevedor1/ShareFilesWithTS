@@ -11,45 +11,45 @@
     <p id="Message"></p>
     <p id="ShareFile"></p>
     <p id="Track"></p>
-    <script src="controller.js">
-        // let btnShare = document.getElementById('BtnShare');
-        // let message = document.getElementById('Message');
-        // let canFile = document.getElementById('ShareFile');
+    <script >
+        let btnShare = document.getElementById('BtnShare');
+        let message = document.getElementById('Message');
+        let canFile = document.getElementById('ShareFile');
 
-        // btnShare.addEventListener('click', shareFile);
+        btnShare.addEventListener('click', shareFile);
 
-        // function shareFile () {
-        //     console.log('Begin share');
-        //     let vcardBlob = new Blob(["test card text plain"], {type: "text/plain;charset=utf-16"});
-        //     let shareFile = [new File([vcardBlob], "card.txt", { type: "text/plain;charset=utf-16" })];
+        function shareFile () {
+            console.log('Begin share');
+            let vcardBlob = new Blob(["test card text plain"], {type: "text/plain;charset=utf-16"});
+            let shareFile = [new File([vcardBlob], "card.txt", { type: "text/plain;charset=utf-16" })];
 
-        //     let shareData = {};
-        //     shareData.text = "Text share";
-        //     shareData.title = "Title share";
-        //     shareData.url = window.location.href;
+            let shareData = {};
+            shareData.text = "Text share";
+            shareData.title = "Title share";
+            shareData.url = window.location.href;
 
-        //     if(navigator.canShare && navigator.canShare({ files: shareFile }))
-        //     {
-        //         shareData.files = shareFile;
-        //         delete shareData.url;
-        //         canFile.textContent = "Can share files";
-        //     }
-        //     else{
-        //         canFile.textContent = "No share files";
-        //     }
+            if(navigator.canShare && navigator.canShare({ files: shareFile }))
+            {
+                shareData.files = shareFile;
+                delete shareData.url;
+                canFile.textContent = "Can share files";
+            }
+            else{
+                canFile.textContent = "No share files";
+            }
         
-        //     if (navigator.share) {
-        //         navigator.share( shareData )
-        //         .then(() => message.textContent = "Success")
-        //         .catch( error => message.textContent = error.message)
+            if (navigator.share) {
+                navigator.share( shareData )
+                .then(() => message.textContent = "Success")
+                .catch( error => message.textContent = error.message)
 
-        //         console.log('END share');
+                console.log('END share');
 
-        //     } 
-        //     else{
-        //         alert('No support share');
-        //     }
-        // }
+            } 
+            else{
+                alert('No support share');
+            }
+        }
 
     </script>
 </body>
