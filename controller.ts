@@ -15,13 +15,9 @@ function shareFile () {
     shareData.title = "Title share";
     shareData.url = window.location.href;
     
-    interface ExtendNavigator extends Navigator {
-        canShare?: (data?: ShareData) => boolean;
-    }
+    var isIphone:boolean = /iPhone/i.test(navigator.userAgent); 
 
-    let newNav: ExtendNavigator = navigator;
-
-    if (newNav.canShare && newNav.canShare({ files: shareFile }))
+    if (isIphone)
     {
         shareData.files = shareFile;
         delete shareData.url;
@@ -32,8 +28,8 @@ function shareFile () {
     }
 
 
-    if (newNav.share) {
-        newNav.share( shareData )
+    if (navigator.share) {
+        navigator.share( shareData )
         .then(() => message.textContent = "Success")
         .catch( error => message.textContent = error)
 
